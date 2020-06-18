@@ -84,15 +84,7 @@ class MyApp extends StatelessWidget {
                           },
                         ),
                         _buildDivider(),
-                        ListTile(
-                          leading: Icon(
-                            FontAwesomeIcons.language,
-                            color: Colors.orange,
-                          ),
-                          title: Text("Change Language"),
-                          trailing: Icon(Icons.keyboard_arrow_right),
-                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeLangagePage()));},
-                        ),
+                       _buildListTile(context),
                         _buildDivider(),
                         ListTile(
                           leading: Icon(
@@ -190,4 +182,17 @@ class MyApp extends StatelessWidget {
       height: 1.0,
       color: Colors.grey.shade400,
     );
+  }
+
+    Container _buildListTile(BuildContext context) {
+    return  Container(
+          child: ListTile(
+                      leading: Icon(
+                      FontAwesomeIcons.language,
+                      color: Colors.orange, ),
+                      title: Text("Change Language"),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                      onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeLangagePage()));},
+            )
+          );
   }
