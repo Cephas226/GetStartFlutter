@@ -1,18 +1,34 @@
+import 'package:GetStartApp/screens/alvogen-screen1.dart';
+import 'package:GetStartApp/screens/alvogen-screen2.dart';
 import 'package:GetStartApp/screens/changeLangage.dart';
+import 'package:GetStartApp/screens/changeLocation.dart';
+import 'package:GetStartApp/screens/changePassword.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
 void main() => runApp(MyApp());
   bool _dark=false;
   Brightness _getBrightness() {
      return _dark ? Brightness.dark : Brightness.light;
   }
 
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
-      home: Scaffold(
+      home: HomeScreen()
+    );
+  }
+}   
+
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
          appBar: AppBar(
           elevation: 0,
           brightness: _getBrightness(),
@@ -79,13 +95,26 @@ class MyApp extends StatelessWidget {
                           ),
                           title: Text("Change Password"),
                           trailing: Icon(Icons.keyboard_arrow_right),
-                          onTap: () {
-                            //open change password
-                          },
+                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePasswordPage()));},
                         ),
                         _buildDivider(),
-      //----Change here
-                       _buildListTile(context),
+                      ListTile(
+                      leading: Icon(
+                      FontAwesomeIcons.language,
+                      color: Colors.orange, ),
+                      title: Text("AlvogenPage"),
+                      trailing: Icon(Icons.vertical_align_bottom),
+                      onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => AlvogenPage1()));},
+                      ),
+                        _buildDivider(),
+                         ListTile(
+                      leading: Icon(
+                      FontAwesomeIcons.language,
+                      color: Colors.orange, ),
+                      title: Text("AlvogenPage2"),
+                      trailing: Icon(Icons.touch_app),
+                      onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => AlvogenPage2()));},
+                      ),
                         _buildDivider(),
                         ListTile(
                           leading: Icon(
@@ -94,9 +123,17 @@ class MyApp extends StatelessWidget {
                           ),
                           title: Text("Change Location"),
                           trailing: Icon(Icons.keyboard_arrow_right),
-                          onTap: () {
-                            //open change location
-                          },
+                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeLocationPage()));},
+                        ),
+                         _buildDivider(),
+                            ListTile(
+                          leading: Icon(
+                            Icons.location_on,
+                            color: Colors.orange,
+                          ),
+                          title: Text("Change Langage"),
+                          trailing: Icon(Icons.keyboard_arrow_right),
+                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeLangagePage()));},
                         ),
                       ],
                     ),
@@ -169,8 +206,7 @@ class MyApp extends StatelessWidget {
               ),
             )
           ],
-        ),
-      ),
+        ),      
     );
   }
 }
@@ -183,17 +219,4 @@ class MyApp extends StatelessWidget {
       height: 1.0,
       color: Colors.grey.shade400,
     );
-  }
-
-    Container _buildListTile(BuildContext context) {
-    return  Container(
-          child: ListTile(
-                      leading: Icon(
-                      FontAwesomeIcons.language,
-                      color: Colors.orange, ),
-                      title: Text("Change Language"),
-                      trailing: Icon(Icons.keyboard_arrow_right),
-                      onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeLangagePage()));},
-            )
-          );
   }

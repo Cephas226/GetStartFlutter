@@ -1,3 +1,4 @@
+import 'package:GetStartApp/main.dart';
 import 'package:flutter/material.dart';
 class ChangeLangagePage extends StatelessWidget {
   @override
@@ -7,9 +8,19 @@ class ChangeLangagePage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Welcome to Langage page'),
+          backgroundColor: Colors.orange,
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+              onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              );
+          },
+        ),
         ),
         body: Center(
-          child: Text('Lagage page'),
+          child: Text('Langage page'),
         ),
       ),
     );
